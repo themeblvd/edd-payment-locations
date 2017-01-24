@@ -36,8 +36,8 @@ class EDD_Payment_Locations {
 	 * Only instance of object.
 	 *
 	 * @var EDD_Payment_Locations
-	*/
-    private static $instance = null;
+	 */
+	private static $instance = null;
 
 	/**
 	 * Creates or returns an instance of this class.
@@ -45,30 +45,30 @@ class EDD_Payment_Locations {
 	 * @return EDD_Payment_Locations A single instance of this class.
 	 *
 	 * @since 0.1.0
-	*/
-    public static function get_instance() {
+	 */
+	public static function get_instance() {
 
-        if ( null === self::$instance ) {
+		if ( null === self::$instance ) {
 
-            self::$instance = new self;
+			self::$instance = new self;
 
-        }
+		}
 
-        return self::$instance;
+		return self::$instance;
 
-    }
+	}
 
 	/**
 	 * Run plugin.
 	 *
 	 * @since 0.1.0
 	 */
-    private function __construct() {
+	private function __construct() {
 
 		/**
 		 * Add the "Location" column to the Payment History page.
 		 */
-        add_filter( 'edd_payments_table_columns', array( $this, 'columns' ) ) ;
+		add_filter( 'edd_payments_table_columns', array( $this, 'columns' ) ) ;
 
 		/**
 		 * Filter in the values to display in the "Location" column,
@@ -82,7 +82,7 @@ class EDD_Payment_Locations {
 		 */
 		add_action( 'edd_view_order_details_payment_meta_after', array( $this, 'details' ) );
 
-    }
+	}
 
 	/**
 	 * Filter columns for EDD payment history table.
