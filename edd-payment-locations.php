@@ -106,12 +106,12 @@ class EDD_Payment_Locations {
 
 		if ( 'location' === $column_name ) {
 
-			$val = get_post_meta( $payment_id, '_edd_payment_user_location', true );
+			$val = esc_html( get_post_meta( $payment_id, '_edd_payment_user_location', true ) );
 
 			if ( ! $val ) {
 
 				$val = get_post_meta( $payment_id, '_edd_payment_user_ip', true );
-				$val = $this->get_city( $val );
+				$val = esc_html( $this->get_city( $val ) );
 
 				update_post_meta( $payment_id, '_edd_payment_user_location', $val );
 
@@ -137,7 +137,7 @@ class EDD_Payment_Locations {
 			$location = get_post_meta( $payment_id, '_edd_payment_user_ip', true );
 			$location = $this->get_city( $location );
 
-			update_post_meta( $payment_id, '_edd_payment_user_location', $location );
+			update_post_meta( $payment_id, '_edd_payment_user_location', esc_html( $location ) );
 
 		}
 
@@ -145,7 +145,7 @@ class EDD_Payment_Locations {
 		<div class="edd-order-location edd-admin-box-inside">
 			<p>
 				<span class="label"><?php _e( 'Location:', 'edd-payment-location' ); ?></span>&nbsp;
-				<span><?php echo esc_attr( $location ); ?></span>
+				<span><?php echo esc_html( $location ); ?></span>
 			</p>
 		</div>
 		<?php
@@ -182,7 +182,7 @@ class EDD_Payment_Locations {
 			}
 		}
 
-		return esc_html( $location );
+		return $location;
 
 	}
 
